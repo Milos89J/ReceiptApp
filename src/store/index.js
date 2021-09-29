@@ -36,6 +36,15 @@ const store = createStore({
                 console.error(e);
             });
         },
+        createReceipt({ state, commit }, receiptData) {
+            axios.post(baseUrl, receiptData).then(res => {
+                const receipt = res.data;
+                commit('setReceipt', receipt)
+                return state.receipt
+            }).catch(e => {
+                console.error(e);
+            });
+        },
     },
     mutations: {
         setReceipts(state, receipts) {
@@ -43,7 +52,7 @@ const store = createStore({
         },
         setReceipt(state, receipt) {
             state.receipt = receipt
-        }
+        },
     }
 })
 

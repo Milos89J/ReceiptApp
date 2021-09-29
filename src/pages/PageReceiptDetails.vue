@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>I am receipt details</h1>
-    <p>{{ receipt.name }}</p>
+    <p>{{ receipt.title }}</p>
   </div>
 </template>
 
