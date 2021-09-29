@@ -1,24 +1,68 @@
 {
   "receipts": [
     {
-      "name": "Andol",
+      "id": 1,
+      "title": "Receipt 1",
+      "medicament": "Andol",
+      "description": "Lorem ipsum dolor sit",
+      "date": "22.11.2021",
+      "doctor": "Dr John Doe"
+    },
+    {
+      "title": "Title",
+      "medicament": "sadasd",
+      "description": "sdasd",
+      "doctor": "sads",
+      "date": "sdasda",
+      "id": 2
+    },
+    {
+      "title": "Test",
+      "medicament": "sadas",
+      "description": "sadas",
+      "doctor": "sadas",
+      "date": "sadas",
+      "id": 3
+    },
+    {
+      "title": "Title",
+      "medicament": "sdasd",
+      "description": "asdas",
+      "doctor": "asdasa",
+      "date": "sdasd",
+      "id": 4
+    },
+    {
+      "title": "Title",
+      "medicament": "sdasd",
+      "description": "asdas",
+      "doctor": "asdasa",
+      "date": "sdasd",
       "id": 5
     },
     {
-      "name": "Brufen",
+      "title": "asdas",
+      "medicament": "sadass",
+      "description": "adas",
+      "doctor": "asdas",
+      "date": "sadsad",
       "id": 6
     },
     {
-      "name": "Bromazepam",
+      "title": "sadsad",
+      "medicament": "asdsa",
+      "description": "sadasd",
+      "doctor": "sadas",
+      "date": "sadasd",
       "id": 7
     },
     {
-      "name": "Nixar",
-      "id": 9
-    },
-    {
-      "id": 10,
-      "name": "Natrijumkromoglikat"
+      "title": "xzcxzc",
+      "medicament": "xzcxz",
+      "description": "xzczx",
+      "doctor": "xzcxzxz",
+      "date": "czx",
+      "id": 8
     }
   ]
 }
