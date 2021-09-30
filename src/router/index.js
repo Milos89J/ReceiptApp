@@ -12,20 +12,20 @@ const router = createRouter({
             component: PageHome
         },
         {
+            path: '/receipt/:id',
+            name: 'PageReceiptDetails',
+            component: PageReceiptDetails
+        },
+        {
             path: '/add-receipt',
             name: 'PageAdd',
             component: PageAddEdit
         },
         {
-            path: '/receipt/:id',
-            name: 'PageReceiptDetails',
-            component: PageReceiptDetails
-        },
-        /*{
-            path: '/edit-receipt',
-            name: 'PageEditReceipt',
+            path: '/edit-receipt/:id',
+            name: 'PageEdit',
             component: PageAddEdit
-        }*/
+        }
     ],
     history: createWebHistory()
 })

@@ -1,6 +1,9 @@
 <template>
   <div class="card m-auto p-4">
-    <h2 class="mb-4">New receipt</h2>
+    <h2 class="mb-4">
+      <span v-if="!editMode">New receipt</span>
+      <span v-if="editMode">Update receipt</span>
+    </h2>
 
     <form>
       <div class="mb-3">
@@ -92,6 +95,8 @@ export default {
         doctor: null,
         date: null,
       },
+      editMode: false,
+      isLoading: false,
     };
   },
   validations() {
@@ -113,19 +118,55 @@ export default {
     };
   },
   computed: {
+    receipt() {
+      return this.$store.state.receipt;
+    },
     isFormValid() {
       return this.v.form.$invalid;
     },
   },
+  created() {
+    const receiptId = this.$route.params.id;
+    if (receiptId) {
+      this.editMode = true;
+      this.getReceipt(receiptId);
+    } else {
+      this.editMode = false;
+    }
+  },
   methods: {
+    async getReceipt(receiptId) {
+      this.isLoading = true;
+      await this.$store.dispatch("getReceiptById", receiptId);
+      this.isLoading = false
+      this.setFormValues();
+    },
+    setFormValues() {
+      this.form.title = this.receipt.title;
+      this.form.medicament = this.receipt.medicament;
+      this.form.description = this.receipt.description;
+      this.form.doctor = this.receipt.doctor;
+      this.form.date = this.receipt.date;
+    },
     createReceipt() {
       this.v.form.$touch();
-      this.$store.dispatch("createReceipt", this.form).then((res) => {
-        this.$router.push({
-          name: "PageReceiptDetails",
-          params: { id: res.id },
+      if (this.editMode) {
+        this.$store
+          .dispatch("updateReceipt", { id: this.receipt.id, data: this.form })
+          .then(() => {
+            this.$router.push({
+              name: "PageReceiptDetails",
+              params: { id: this.receipt.id },
+            });
+          });
+      } else {
+        this.$store.dispatch("createReceipt", this.form).then((res) => {
+          this.$router.push({
+            name: "PageReceiptDetails",
+            params: { id: res.id },
+          });
         });
-      });
+      }
     },
   },
 };
