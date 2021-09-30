@@ -1,20 +1,23 @@
 <template>
-  <div id="app">
-    <h2>Recepti</h2>
-    <router-link :to="{ name: 'PageAdd' }">Add</router-link>
-
-    <ul>
-      <li v-for="receipt of receipts" :key="receipt.id">
-        <div class="recept-box">
-          <div>
-            <router-link
-              :to="{ name: 'PageReceiptDetails', params: { id: receipt.id } }"
-            >
-              <span>{{ receipt.title }}</span>
-            </router-link>
-            <button @click="deleteReceipt(receipt.id)">Delete</button>
+  <div>
+    <div class="d-flex justify-content-between">
+      <h2 class="receipt">Receipts</h2>
+      <router-link
+        :to="{ name: 'PageAdd' }"
+        class="btn btn-primary d-flex align-items-center"
+        ><span>Add Receipt</span></router-link
+      >
+    </div>
+    <ul class="list-group mt-2">
+      <li v-for="receipt of receipts" :key="receipt.id" class="list-group-item">
+        <router-link
+          :to="{ name: 'PageReceiptDetails', params: { id: receipt.id } }"
+          class="receipt-title"
+        >
+          <div class="d-flex justify-content-between align-items-center">
+            <span>{{ receipt.title }}</span>
           </div>
-        </div>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -49,7 +52,8 @@ export default {
 </script>
 
 <style scoped>
-.recept-box {
-  display: flex;
+.receipt-title {
+  color: #333;
+  text-decoration: none;
 }
 </style>

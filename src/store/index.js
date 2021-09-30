@@ -45,6 +45,24 @@ const store = createStore({
                 console.error(e);
             });
         },
+        updateReceipt({ state, commit }, data) {
+            axios.patch(baseUrl + `/${data.id}`, data.data).then(res => {
+                const receipt = res.data;
+                commit('setReceipt', receipt)
+                return state.receipt
+            }).catch(e => {
+                console.error(e);
+            });
+        },
+        deleteReceipt({ state, commit }, receiptId) {
+            axios.delete(baseUrl + `/${receiptId}`).then(res => {
+                const receipt = res.data;
+                commit('setReceipt', receipt)
+                return state.receipt
+            }).catch(e => {
+                console.error(e);
+            });
+        }
     },
     mutations: {
         setReceipts(state, receipts) {
